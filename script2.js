@@ -1,15 +1,14 @@
 //parece q essa camera nao existe antes de carregar a cena toda
 // var camm = document.querySelector('#cam').components.camera;
 const canv = document.querySelector('#segcam');
+canv.style.display = none;
 const cena = document.querySelector('a-scene');
 const btns = document.querySelector('#btnn');
 const urll = document.querySelector('#url');
 
 //esse rendenizador rendeniza a camera 2
 var rendenizador = new THREE.WebGLRenderer({canvas: canv});
-var cubo = document.querySelector('a-box');
-var x, z;
-
+rendenizador.setSize(canv.clientWidth *2, canv.clientHeight*2);
 
 var rtc, ws, canallaranja;
 
@@ -36,7 +35,7 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
 });
 
 btns.onclick = () =>{
-
+    document.querySelector('#box').style.display="none";
 connect();
 
 }
