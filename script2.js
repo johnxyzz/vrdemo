@@ -1,16 +1,16 @@
 //parece q essa camera nao existe antes de carregar a cena toda
 // var camm = document.querySelector('#cam').components.camera;
-const canv = document.querySelector('#segcam');
-canv.style.display = "none";
+// const canv = document.querySelector('#segcam');
+// canv.style.display = "none";
 const cena = document.querySelector('a-scene');
-const btns = document.querySelector('#btnn');
-const urll = document.querySelector('#url');
+// const btns = document.querySelector('#btnn');
+// const urll = document.querySelector('#url');
 
 //esse rendenizador rendeniza a camera 2
-var rendenizador = new THREE.WebGLRenderer({canvas: canv});
-rendenizador.setSize(canv.clientWidth *2, canv.clientHeight*2);
+// var rendenizador = new THREE.WebGLRenderer({canvas: canv});
+// rendenizador.setSize(canv.clientWidth *2, canv.clientHeight*2);
 
-var rtc, ws, canallaranja;
+// var rtc, ws, canallaranja;
 
         //movimento
           var a = false;
@@ -48,73 +48,73 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
     // specularMap: specularmap
 });
 
-btns.onclick = () =>{
+// btns.onclick = () =>{
 
-    // document.querySelector('#box').style.display= "none";
-    connect();
+//     // document.querySelector('#box').style.display= "none";
+//     connect();
 
-}
+// }
 
-function connect(){
+// function connect(){
 
-//crio a a conexao webrtc
-rtc = new RTCPeerConnection();
+// //crio a a conexao webrtc
+// rtc = new RTCPeerConnection();
 
-//crio o websocket
+// //crio o websocket
 
-ws = new WebSocket('ws://'+ urll.value +':6656');
+// ws = new WebSocket('ws://'+ urll.value +':6656');
 
-    //websocket aq
-    ws.onopen = ()=>{
+//     //websocket aq
+//     ws.onopen = ()=>{
     
-        console.log('ja conectei com o websocket');
-        document.querySelector('#box').style.display= "none";
+//         console.log('ja conectei com o websocket');
+//         document.querySelector('#box').style.display= "none";
 
-        canallaranja = canv.captureStream(30);
-        canallaranja.getTracks().forEach(i =>{
-            rtc.addTrack(i, canallaranja);
-        });
-        rtc.createOffer().then((oferta)=>{
-            return rtc.setLocalDescription(oferta);
-        }).then(()=>{
-            ws.send(JSON.stringify({
-                tipo: 'oferta',
-                sdp: rtc.localDescription
-            }));
-        }).catch((err)=>{
-            console.log('erro na oferta', err);
-        })
-    }
+//         canallaranja = canv.captureStream(30);
+//         canallaranja.getTracks().forEach(i =>{
+//             rtc.addTrack(i, canallaranja);
+//         });
+//         rtc.createOffer().then((oferta)=>{
+//             return rtc.setLocalDescription(oferta);
+//         }).then(()=>{
+//             ws.send(JSON.stringify({
+//                 tipo: 'oferta',
+//                 sdp: rtc.localDescription
+//             }));
+//         }).catch((err)=>{
+//             console.log('erro na oferta', err);
+//         })
+//     }
 
-    ws.onmessage = (e)=>{
+//     ws.onmessage = (e)=>{
 
-        var msg = JSON.parse(e.data);
-        if(msg.tipo == 'resposta'){
-            console.log('resposta:', msg.sdp);
-            rtc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
-        }else if(msg.tipo == 'candidato'){
-            rtc.addIceCandidate(new RTCIceCandidate(msg.candidato)).catch((err)=>{
-                console.error('erro no candidato skol ice', err);
-            })
-        }
-    };
-    rtc.onicecandidate = (e) =>{
-        if(e.candidate){
-            ws.send(JSON.stringify({
-                tipo: 'candidato',
-                candidato: e.candidate
-            }));
-        }
-    };
-    ws.onclose = ()=>{
-        console.log('conexao websocket fechada')
-    }
-    ws.onerror = error;
-    function error(err){
-        console.log('erro:', err)
-    }
+//         var msg = JSON.parse(e.data);
+//         if(msg.tipo == 'resposta'){
+//             console.log('resposta:', msg.sdp);
+//             rtc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
+//         }else if(msg.tipo == 'candidato'){
+//             rtc.addIceCandidate(new RTCIceCandidate(msg.candidato)).catch((err)=>{
+//                 console.error('erro no candidato skol ice', err);
+//             })
+//         }
+//     };
+//     rtc.onicecandidate = (e) =>{
+//         if(e.candidate){
+//             ws.send(JSON.stringify({
+//                 tipo: 'candidato',
+//                 candidato: e.candidate
+//             }));
+//         }
+//     };
+//     ws.onclose = ()=>{
+//         console.log('conexao websocket fechada')
+//     }
+//     ws.onerror = error;
+//     function error(err){
+//         console.log('erro:', err)
+//     }
 
-}
+// }
 
 //executa quando a cena for totalmente carregada
 
@@ -143,7 +143,7 @@ cena.addEventListener('loaded',()=>{
 
     document.querySelector('#chao').getObject3D('mesh').material = plowedmaterial;
     
-    var camm = document.querySelector('#cam').components.camera.camera;
+    // var camm = document.querySelector('#cam').components.camera.camera;
 
     var player = document.querySelector('#player');
 
@@ -239,9 +239,9 @@ cena.addEventListener('loaded',()=>{
     movePlayer();
 
 
-    function renderdois(){
-        rendenizador.render(cena.object3D, camm);
-    }
-        rendenizador.setAnimationLoop(renderdois);
-        renderdois();
+    // function renderdois(){
+    //     rendenizador.render(cena.object3D, camm);
+    // }
+    //     rendenizador.setAnimationLoop(renderdois);
+    //     renderdois();
 });
