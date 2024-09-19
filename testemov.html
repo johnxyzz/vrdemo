@@ -117,24 +117,6 @@ function checkGamepad() {
 // Inicia o loop para verificar o gamepad
 checkGamepad();
 
-    // document.addEventListener('keydown', function(event) {
-    //   switch (event.key) {
-    //     case 'w': moveForward = true; break;
-    //     case 's': moveBackward = true; break;
-    //     case 'a': moveLeft = true; break;
-    //     case 'd': moveRight = true; break;
-    //   }
-    // });
-
-    // document.addEventListener('keyup', function(event) {
-    //   switch (event.key) {
-    //     case 'w': moveForward = false; break;
-    //     case 's': moveBackward = false; break;
-    //     case 'a': moveLeft = false; break;
-    //     case 'd': moveRight = false; break;
-    //   }
-    // });
-
     // Função de loop contínuo para atualização de posição
     function movePlayer() {
       var player = document.querySelector('#player');
@@ -169,6 +151,7 @@ checkGamepad();
 
       // Atualiza a posição do cubo
       player.setAttribute('position', playerPosition);
+      camera.setAttribute('position', playerPosition);
 
       // Loop contínuo para atualizar a posição
       requestAnimationFrame(movePlayer);
