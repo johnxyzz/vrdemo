@@ -1,7 +1,7 @@
 //parece q essa camera nao existe antes de carregar a cena toda
 // var camm = document.querySelector('#cam').components.camera;
 const canv = document.querySelector('#segcam');
-canv.style.display = none;
+canv.style.display = 'none";
 const cena = document.querySelector('a-scene');
 const btns = document.querySelector('#btnn');
 const urll = document.querySelector('#url');
@@ -36,7 +36,7 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
 
 btns.onclick = () =>{
 
-    document.querySelector('#box').style.display="none";
+    document.querySelector('#box').style.display= "none";
     connect();
 
 }
