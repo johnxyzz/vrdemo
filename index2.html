@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vr demo</title>
+
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+
+</head>
+<body>
+    <a-scene>
+      <!-- as imagens e os modelos 3d ficam aq -->
+        <a-assets>
+            <img src="./assets/grass.jpg" id="grass">
+            <img src="./assets/sky.jpg" id="sky">
+            <img src="./assets/skai.jpg" id="skai">
+            <!-- <img src="./assets/field1.png" id="field"> -->
+            <a-asset-item src="./assets/corn-field.glb" id="cornfield"></a-asset-item>
+            <a-asset-item src="./assets/trator/trrr.glb" id="trator"></a-asset-item>
+        </a-assets>
+
+        <a-entity camera="active: true" id="vr" position="0 8 10 " look-controls wasd-controls></a-entity>
+        <a-entity camera id="cam" position="-10 10 10" rotation="-25 -45 0"></a-entity>
+
+        <a-box position="0 1 0" scale="3 3 3" color="pink"></a-box>
+
+        <!-- milharal -->
+        <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-18 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-18 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="0 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="0 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="18 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="18 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
+        
+        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="0 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="0 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
+
+        <a-gltf-model src="#trator" id="tratorr" position="40 8.9 0" scale="0.2 0.2 0.2" rotation="0 -45 0"></a-gltf-model>
+        <a-gltf-model src="#trator" id="tratorr" position="40 8.9 60" scale="0.2 0.2 0.2" rotation="0 220 0"></a-gltf-model>
+        <!-- <a-entity obj-model="obj: url(./assets/trator/Tractor.obj)" id="trator" scale="0.1 0.1 0.1" position="0 3 0"></a-entity> -->
+
+        
+        <a-plane rotation="-90 0 0" id="chao" width="200" height="200"></a-plane>
+
+        <a-light type="ambient" color="#ffffff" intensity="0.4"></a-light>
+
+        <a-sky src="#skai"></a-sky>
+    </a-scene>
+
+    <canvas id="segcam"></canvas>
+
+    <script src="./script2.js"></script>
+    <style>
+        #segcam{
+            position: absolute;
+            top:10px;
+            right: 10px;
+            z-index: 10;
+            background-color: rgba(189, 28, 28, 0.363);
+        }
+        a-scene{
+            position: absolute;
+            z-index:1
+        }
+    </style>
+</body>
+</html>
