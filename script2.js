@@ -50,7 +50,7 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
 
 btns.onclick = () =>{
 
-    document.querySelector('#box').style.display= "none";
+    // document.querySelector('#box').style.display= "none";
     connect();
 
 }
@@ -68,6 +68,7 @@ ws = new WebSocket('ws://'+ urll.value +':6656');
     ws.onopen = ()=>{
     
         console.log('ja conectei com o websocket');
+        document.querySelector('#box').style.display= "none";
 
         canallaranja = canv.captureStream(30);
         canallaranja.getTracks().forEach(i =>{
