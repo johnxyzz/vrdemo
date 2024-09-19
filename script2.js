@@ -35,8 +35,9 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
 });
 
 btns.onclick = () =>{
+
     document.querySelector('#box').style.display="none";
-connect();
+    connect();
 
 }
 
