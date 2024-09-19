@@ -97,6 +97,14 @@ function checkGamepad() {
           moveLeft = true;
         }else if(btns[15].pressed){
           moveRight = true;
+        }else if(btns[12].pressed == false){
+          moveForward = false;
+        }else if(btns[13].pressed == false){
+          moveBackward = false;
+        }else if(btns[14].pressed == false){
+          moveLeft = false;
+        }else if(btns[15].pressed == false){
+          moveRight = false;
         }
       }
     }
