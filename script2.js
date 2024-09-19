@@ -2,11 +2,16 @@
 // var camm = document.querySelector('#cam').components.camera;
 const canv = document.querySelector('#segcam');
 const cena = document.querySelector('a-scene');
+const btns = document.querySelector('#btnn');
+const urll = document.querySelector('#url');
 
 //esse rendenizador rendeniza a camera 2
 var rendenizador = new THREE.WebGLRenderer({canvas: canv});
 var cubo = document.querySelector('a-box');
 var x, z;
+
+
+var rtc, ws, canallaranja;
 
 //material da terra
 
@@ -30,45 +35,20 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
     // specularMap: specularmap
 });
 
+btns.onclick = () =>{
+
+connect();
+
+}
+
+function connect(){
+
 //crio a a conexao webrtc
-var rtc = new RTCPeerConnection();
-var canallaranja;
+rtc = new RTCPeerConnection();
 
-//executa quando a cena for totalmente carregada
+//crio o websocket
 
-cena.addEventListener('loaded',()=>{
-
-    //boto a textura no a-plane
-    normalmap.wrapS = THREE.RepeatWrapping;
-    normalmap.wrapT = THREE.RepeatWrapping;
-    normalmap.anisotropy = 4;
-    normalmap.repeat.set(20, 20);
-
-    dispmap.wrapS = THREE.RepeatWrapping;
-    dispmap.wrapT = THREE.RepeatWrapping;
-    dispmap.anisotropy = 4;
-    dispmap.repeat.set(20, 20);
-
-    aomap.wrapS = THREE.RepeatWrapping;
-    aomap.wrapT = THREE.RepeatWrapping;
-    aomap.anisotropy = 4;
-    aomap.repeat.set(20, 20);
-
-    albedomap.wrapS = THREE.RepeatWrapping;
-    albedomap.wrapT = THREE.RepeatWrapping;
-    albedomap.anisotropy = 4;
-    albedomap.repeat.set(20, 20);
-
-    document.querySelector('#chao').getObject3D('mesh').material = plowedmaterial;
-
-    //crio o websocket
-
-    var ws = new WebSocket('ws://localhost:6656');
-    var camm = document.querySelector('#cam').components.camera.camera;
-
-    // console.log(camm);
-    // console.log(cena);
-    // console.log(rendenizador);
+ws = new WebSocket('ws://'+ urll.value +':6656');
 
     //websocket aq
     ws.onopen = ()=>{
@@ -90,6 +70,7 @@ cena.addEventListener('loaded',()=>{
             console.log('erro na oferta', err);
         })
     }
+
     ws.onmessage = (e)=>{
 
         var msg = JSON.parse(e.data);
@@ -117,6 +98,42 @@ cena.addEventListener('loaded',()=>{
     function error(err){
         console.log('erro:', err)
     }
+
+}
+
+//executa quando a cena for totalmente carregada
+
+cena.addEventListener('loaded',()=>{
+
+    //boto a textura no a-plane
+    normalmap.wrapS = THREE.RepeatWrapping;
+    normalmap.wrapT = THREE.RepeatWrapping;
+    normalmap.anisotropy = 4;
+    normalmap.repeat.set(20, 20);
+
+    dispmap.wrapS = THREE.RepeatWrapping;
+    dispmap.wrapT = THREE.RepeatWrapping;
+    dispmap.anisotropy = 4;
+    dispmap.repeat.set(20, 20);
+
+    aomap.wrapS = THREE.RepeatWrapping;
+    aomap.wrapT = THREE.RepeatWrapping;
+    aomap.anisotropy = 4;
+    aomap.repeat.set(20, 20);
+
+    albedomap.wrapS = THREE.RepeatWrapping;
+    albedomap.wrapT = THREE.RepeatWrapping;
+    albedomap.anisotropy = 4;
+    albedomap.repeat.set(20, 20);
+
+    document.querySelector('#chao').getObject3D('mesh').material = plowedmaterial;
+    
+    var camm = document.querySelector('#cam').components.camera.camera;
+
+    // console.log(camm);
+    // console.log(cena);
+    // console.log(rendenizador);
+
 
     function renderdois(){
         rendenizador.render(cena.object3D, camm);
