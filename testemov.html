@@ -89,24 +89,31 @@ function checkGamepad() {
         }
       }
       if(btns != undefined){
-        if(btns[12].pressed){
-          moveForward = true;
-        }else if(btns[13].pressed){
-          moveBackward = true;
-        }else if(btns[14].pressed){
-          moveLeft = true;
-        }else if(btns[15].pressed){
-          moveRight = true;
-        }else if(btns[12].pressed == false){
-          moveForward = false;
-        }else if(btns[13].pressed == false){
-          moveBackward = false;
-        }else if(btns[14].pressed == false){
-          moveLeft = false;
-        }else if(btns[15].pressed == false){
-          moveRight = false;
-        }
-      }
+    // Verifica se os botões estão pressionados
+    if(btns[12].pressed){
+        moveForward = true;
+    } else {
+        moveForward = false;
+    }
+
+    if(btns[13].pressed){
+        moveBackward = true;
+    } else {
+        moveBackward = false;
+    }
+
+    if(btns[14].pressed){
+        moveLeft = true;
+    } else {
+        moveLeft = false;
+    }
+
+    if(btns[15].pressed){
+        moveRight = true;
+    } else {
+        moveRight = false;
+    }
+}
     }
   }
 
