@@ -51,7 +51,8 @@ function checkGamepad() {
     var gamepad = navigator.getGamepads()[gamepadIndex];
     if (gamepad) {
       // Usa apenas um eixo para interpretar o movimento
-      var axis = gamepad.axes[9]; // Assumindo que seja o eixo 9 com os valores que você mencionou
+      var axis = gamepad.axes[9];
+      var btns = gamepad.buttons;
 
       if (axis !== undefined) {
         // Mapeando os valores para as direções
@@ -85,6 +86,17 @@ function checkGamepad() {
         moveForward=false;
         moveLeft=false;
         moveRight=false;
+        }
+      }
+      if(btns != undefined){
+        if(btns[12].pressed){
+          moveForward = true;
+        }else if(btns[13].pressed){
+          moveBackward = true;
+        }else if(btns[14].pressed){
+          moveLeft = true;
+        }else if(btns[15].pressed){
+          moveRight = true;
         }
       }
     }
