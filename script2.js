@@ -12,6 +12,20 @@ rendenizador.setSize(canv.clientWidth *2, canv.clientHeight*2);
 
 var rtc, ws, canallaranja;
 
+        //movimento
+          var a = false;
+          var gamepadIndex = null;
+          var moveForward = false;
+          var moveBackward = false;
+          var moveLeft = false;
+          var moveRight = false;
+
+          window.addEventListener('gamepadconnected', (e) => {
+            a = true;
+            gamepadIndex = e.gamepad.index;
+            console.log('Gamepad conectado:', e.gamepad);
+          });
+
 //material da terra
 
 var textloader = new THREE.TextureLoader();
@@ -130,9 +144,98 @@ cena.addEventListener('loaded',()=>{
     
     var camm = document.querySelector('#cam').components.camera.camera;
 
+    var player = document.querySelector('#player');
+
     // console.log(camm);
     // console.log(cena);
     // console.log(rendenizador);
+
+    function checkGamepad() {
+        if (a) {
+          // Acessa o gamepad conectado
+          var gamepad = navigator.getGamepads()[gamepadIndex];
+          if (gamepad) {
+            // Usa apenas um eixo para interpretar o movimento
+            // var axis = gamepad.axes[9];
+            var btns = gamepad.buttons;
+      
+            if(btns != undefined){
+          // Verifica se os botões estão pressionados
+          if(btns[12].pressed){
+              moveForward = true;
+          } else {
+              moveForward = false;
+          }
+      
+          if(btns[13].pressed){
+              moveBackward = true;
+          } else {
+              moveBackward = false;
+          }
+      
+          if(btns[14].pressed){
+              moveLeft = true;
+          } else {
+              moveLeft = false;
+          }
+      
+          if(btns[15].pressed){
+              moveRight = true;
+          } else {
+              moveRight = false;
+          }
+      }
+          }
+        }
+      
+        // Continua verificando o gamepad a cada frame
+        requestAnimationFrame(checkGamepad);
+      }
+      
+      checkGamepad();
+
+    // Função de loop contínuo para atualização de posição
+    function movePlayer() {
+    //   var player = document.querySelector('#player');
+      var camera = document.querySelector('#vr');
+      var playerPosition = player.getAttribute('position');
+      
+      // Pegue a rotação da câmera
+      var cameraRotation = camera.getAttribute('rotation');
+      
+      // Converta a rotação Y da câmera (ângulo de yaw) para radianos
+      var angleRad = THREE.MathUtils.degToRad(cameraRotation.y);
+      
+      var speed = 0.07; // Ajuste a velocidade
+
+      // Movimentos
+      if (moveForward) {
+        playerPosition.x += Math.sin(angleRad) * speed;
+        playerPosition.z += Math.cos(angleRad) * speed;
+      }
+      if (moveBackward) {
+        playerPosition.x -= Math.sin(angleRad) * speed;
+        playerPosition.z -= Math.cos(angleRad) * speed;
+      }
+      if (moveLeft) {
+        playerPosition.x -= Math.sin(angleRad - Math.PI / 2) * speed;
+        playerPosition.z -= Math.cos(angleRad - Math.PI / 2) * speed;
+      }
+      if (moveRight) {
+        playerPosition.x -= Math.sin(angleRad + Math.PI / 2) * speed;
+        playerPosition.z += Math.cos(angleRad + Math.PI / 2) * speed;
+      }
+
+      // Atualiza a posição do cubo
+      player.setAttribute('position', playerPosition);
+      camera.setAttribute('position', playerPosition);
+
+      // Loop contínuo para atualizar a posição
+      requestAnimationFrame(movePlayer);
+    }
+
+    // Inicia o loop de movimento
+    movePlayer();
 
 
     function renderdois(){
