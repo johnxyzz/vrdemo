@@ -49,6 +49,10 @@
         <a-sky src="#skai"></a-sky>
     </a-scene>
 
+    <div id="box">
+        <input type="text" id="url"/>
+        <button>conectar</button>
+    </div>
     <canvas id="segcam"></canvas>
 
     <script src="./script2.js"></script>
@@ -59,6 +63,12 @@
             right: 10px;
             z-index: 10;
             background-color: rgba(189, 28, 28, 0.363);
+        }
+        #box{
+            position: absolute;
+            top: 20px;
+            left:20px;
+            z-index: 10;
         }
         a-scene{
             position: absolute;

@@ -16,7 +16,6 @@ var objloader = new THREE.OBJLoader();
 let normalmap = textloader.load('./assets/plowed.png');
 let dispmap = textloader.load('./assets/ploweddisp.png');
 let aomap = textloader.load('./assets/plowedao.png');
-// let specularmap = textloader.load('./assets/plowedspecular.png');
 let albedomap = textloader.load('./assets/field1.png')
 
 let plowedmaterial =  new THREE.MeshStandardMaterial({
@@ -30,10 +29,6 @@ let plowedmaterial =  new THREE.MeshStandardMaterial({
 	bumpScale: 1
     // specularMap: specularmap
 });
-
-//trator
-
-// let texttrator = textloader.load('./assets/trator/Texure Tractor.jpg');
 
 //crio a a conexao webrtc
 var rtc = new RTCPeerConnection();
@@ -65,10 +60,6 @@ cena.addEventListener('loaded',()=>{
     albedomap.repeat.set(20, 20);
 
     document.querySelector('#chao').getObject3D('mesh').material = plowedmaterial;
-
-    //trator
-
-    // document.querySelector('#trator').getObject3D('mesh').material = texttrator;   
 
     //crio o websocket
 
