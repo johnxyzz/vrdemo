@@ -14,7 +14,7 @@
     <a-scene>
       <!-- as imagens e os modelos 3d ficam aq -->
         <a-assets>
-            <img src="./assets/grass.jpg" id="grass">
+            <!-- <img src="./assets/grass.jpg" id="grass"> -->
             <img src="./assets/sky.jpg" id="sky">
             <img src="./assets/skai.jpg" id="skai">
             <!-- <img src="./assets/field1.png" id="field"> -->
@@ -24,8 +24,6 @@
 
         <a-entity camera="active: true" id="vr" position="0 8 10 " look-controls wasd-controls></a-entity>
         <a-entity camera id="cam" position="-10 10 10" rotation="-25 -45 0"></a-entity>
-
-        <a-box position="0 1 0" scale="3 3 3" color="pink"></a-box>
 
         <!-- milharal -->
         <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
@@ -39,33 +37,12 @@
         <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
         <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
         <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -18" scale="0.1 0.1 0.1"></a-gltf-model>
         <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -36" scale="0.1 0.1 0.1"></a-gltf-model>
-        
-        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="0 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="0 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="18 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="36 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-54 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
-        <a-gltf-model src="#cornfield" id="milho" position="-72 -0.5 -54" scale="0.1 0.1 0.1"></a-gltf-model>
 
-        <a-gltf-model src="#trator" id="tratorr" position="40 8.9 0" scale="0.2 0.2 0.2" rotation="0 -45 0"></a-gltf-model>
-        <a-gltf-model src="#trator" id="tratorr" position="40 8.9 60" scale="0.2 0.2 0.2" rotation="0 220 0"></a-gltf-model>
         <!-- <a-entity obj-model="obj: url(./assets/trator/Tractor.obj)" id="trator" scale="0.1 0.1 0.1" position="0 3 0"></a-entity> -->
 
         
-        <a-plane rotation="-90 0 0" id="chao" width="200" height="200"></a-plane>
+        <a-plane rotation="-90 0 0" id="chao" width="120" height="120"></a-plane>
 
         <a-light type="ambient" color="#ffffff" intensity="0.4"></a-light>
 
